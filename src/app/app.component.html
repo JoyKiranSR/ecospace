@@ -1,7 +1,17 @@
 <div class="flex flex-col h-screen">
     <!-- Header -->
     <app-header></app-header>
-    <!-- Sidebar -->
-    <app-sidebar></app-sidebar>
+
+    <!-- Body with Sidebar and Main -->
+    <div class="flex flex-1">
+        <!-- Sidebar -->
+        <app-sidebar></app-sidebar>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 bg-gray-50">
+            <h2 class="text-lg font-semibold">Welcome to Ecospace 🌍</h2>
+            <p class="text-gray-600">Start exploring plants and soils.</p>
+        </main>
+    </div>
 </div>
 <router-outlet></router-outlet>
