@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './components/button/button.component';
 import { CardComponent } from './components/card/card.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
   declarations: [],
@@ -10,12 +11,14 @@ import { LoadingComponent } from './components/loading/loading.component';
     CommonModule,
     ButtonComponent,
     CardComponent,
-    LoadingComponent
+    LoadingComponent,
+    ToastComponent
   ],
   exports: [
     ButtonComponent,
     CardComponent,
-    LoadingComponent
+    LoadingComponent,
+    ToastComponent
   ]
 })
 export class SharedModule { }

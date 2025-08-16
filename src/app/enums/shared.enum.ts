@@ -11,3 +11,10 @@ export enum LoadingType {
   SPINNER = 'spinner',
   SWEEP = 'sweep'
 }
+
+export enum ToastType {
+  SUCCESS = 'success',
+  ERROR = 'error',
+  WARNING = 'warning',
+  INFO = 'info'
+}
