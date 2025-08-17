@@ -2,7 +2,11 @@ export enum ButtonVarient {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
   OUTLINE = 'outline',
-  DANGER = 'danger'
+  DANGER = 'danger',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  INFO = 'info',
+  LINK = 'link'
 }
 
 export enum LoadingType {
