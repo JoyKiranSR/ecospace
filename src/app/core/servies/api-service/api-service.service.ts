@@ -10,8 +10,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  get<T>(endpoint: string, params?: Record<string, any>): Observable<T> {
+  get<ApiResponse>(endpoint: string, params?: Record<string, any>): Observable<ApiResponse> {
     const httpParams = new HttpParams({ fromObject: params || {} });
-    return this.http.get<T>(`${this.baseUrl}/${endpoint}`, { params: httpParams });
+    return this.http.get<ApiResponse>(`${this.baseUrl}/${endpoint}`, { params: httpParams });
   }
 }
