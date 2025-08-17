@@ -34,6 +34,21 @@ export class ButtonComponent implements OnInit {
       case ButtonVarient.DANGER:
         this.buttonClass = 'btn-danger';
         break;
+      case ButtonVarient.SUCCESS:
+        this.buttonClass = 'btn-success';
+        break;
+      case ButtonVarient.WARNING:
+        this.buttonClass = 'btn-warning';
+        break;
+      case ButtonVarient.INFO:
+        this.buttonClass = 'btn-info';
+        break;
+      case ButtonVarient.LINK:
+        this.buttonClass = 'btn-link';
+        break;
+      default:
+        this.buttonClass = 'btn-primary'; // fallback
+        break;
     }
   }
 }
