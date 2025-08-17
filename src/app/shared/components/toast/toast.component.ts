@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Toast } from '../../../models/toast.model';
 import { Observable } from 'rxjs';
-import { ToastService } from './toast.service';
+import { ToastService } from '../../services/toast/toast.service';
 import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
