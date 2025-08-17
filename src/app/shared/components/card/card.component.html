@@ -1,0 +1,19 @@
+<div
+  class="flex flex-col h-full bg-emerald-100 shadow-lg rounded-xl hover:shadow-xl transition duration-200 overflow-hidden cursor-pointer">
+  <!-- Optional header slot -->
+  @if (hasHeader) {
+  <div class="p-4 border-b">
+    <ng-content select="[card-header]"></ng-content>
+  </div>
+  }
+  <!-- Main content slot -->
+  <div class="p-4">
+    <ng-content select="[card-body]"></ng-content>
+  </div>
+  <!-- Optional footer slot -->
+  @if (hasFooter) {
+  <div class="p-4 border-t">
+    <ng-content select="[card-footer]"></ng-content>
+  </div>
+  }
+</div>

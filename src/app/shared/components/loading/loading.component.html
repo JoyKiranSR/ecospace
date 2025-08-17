@@ -1,0 +1,29 @@
+<div class="flex items-center justify-center p-4">
+  @switch (type) {
+  @case (LoadingType.DOTS) {
+  <div class="flex space-x-2">
+    <div class="w-3 h-3 bg-green-600 rounded-full animate-bounce"></div>
+    <div class="w-3 h-3 bg-green-600 rounded-full animate-bounce [animation-delay:-0.2s]"></div>
+    <div class="w-3 h-3 bg-green-600 rounded-full animate-bounce [animation-delay:-0.4s]"></div>
+  </div>
+  }
+
+  @case (LoadingType.DUEL_RING) {
+  <div class="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-600"></div>
+  }
+
+  @case (LoadingType.SPINNER) {
+  <div class="w-12 h-12 border-4 border-green-600 border-t-transparent border-solid rounded-full animate-spin"></div>
+  }
+
+  @case (LoadingType.SWEEP) {
+  <div
+    class="w-12 h-12 rounded-full border-4 border-t-green-600 border-r-transparent border-b-transparent border-l-transparent animate-spin">
+  </div>
+  }
+
+  @default {
+  <div class="w-12 h-12 border-4 border-green-600 border-t-transparent border-solid rounded-full animate-spin"></div>
+  }
+  }
+</div>

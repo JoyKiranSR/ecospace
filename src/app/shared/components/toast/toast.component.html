@@ -1,0 +1,10 @@
+<div class="flex flex-col fixed top-16 left-1/2 transform -translate-x-1/2 space-y-2 z-50">
+  <div *ngFor="let toast of toasts$ | async" [ngClass]="{
+         'bg-green-500': toast.type === 'success',
+         'bg-red-500': toast.type === 'error',
+         'bg-blue-500': toast.type === 'info',
+         'bg-yellow-500': toast.type === 'warning'
+       }" class="text-white px-4 py-2 rounded-lg shadow-md animate-fade-in">
+    {{ toast.message }}
+  </div>
+</div>
