@@ -4,8 +4,7 @@ import { Component, Input } from '@angular/core';
   selector: 'app-property-card',
   standalone: true,
   imports: [],
-  templateUrl: './property-card.component.html',
-  styleUrl: './property-card.component.scss'
+  templateUrl: './property-card.component.html'
 })
 export class PropertyCardComponent {
   @Input() label: string;
