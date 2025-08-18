@@ -1,0 +1,81 @@
+<ng-container>
+  <!-- Page Header -->
+  <app-list-page-wrapper [title]="'Soil Details'"
+    description="Explore the detailed properties and description of this soil."></app-list-page-wrapper>
+  @if (soil) {
+  <div class="flex flex-col">
+    <!-- Back Button -->
+    <div class="mb-6 flex">
+      <app-button [varient]="ButtonVarient.SECONDARY" (click)="goBack()">
+        Back to List
+      </app-button>
+    </div>
+    <!-- Main Content -->
+    <div class="grid gap-6 lg:grid-cols-12 flex-grow">
+      <!-- Left Column -->
+      <div class="lg:col-span-4 flex flex-col">
+        <div class="text-3xl font-bold text-gray-800 mb-4">{{ soil.name }}</div>
+        <div
+          class="w-full h-64 bg-orange-400 rounded-2xl flex items-center justify-center text-6xl font-bold text-red-900">
+          {{ soil.name.charAt(0).toUpperCase() }}
+        </div>
+      </div>
+      <!-- Right Column -->
+      <div class="lg:col-span-8 flex flex-col space-y-4">
+        <!-- Badges for Type & Texture -->
+        <div class=" flex items-center gap-2 my-2">
+          <span class="text-white bg-emerald-600 text-xs font-medium px-2 py-1 rounded-full">{{ soil.type }}</span>
+          <span class="text-white bg-emerald-500 text-xs font-medium px-2 py-1 rounded-full">{{ soil.texture }}</span>
+        </div>
+        <!-- Description -->
+        <p class="text-gray-700 mb-4">
+          {{ soil.description || 'No description available.' }}
+        </p>
+        <!-- Tabs: Properties, Soil Issues, Notes -->
+        <div class="mt-4">
+          <app-tabs [tabs]="tabs">
+            <!-- Properties Tab -->
+            <ng-template tabContent="properties">
+              <dt class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <app-property-card label="Drainage" [value]="soil.drainage"></app-property-card>
+                <app-property-card label="Nutrient Level" [value]="soil.nutrientLevel"></app-property-card>
+                <app-property-card label="Organic Matter" [value]="soil.organicMatterLevel"></app-property-card>
+                <app-property-card label="pH Level"
+                  [value]="soil.phMin && soil.phMax ? soil.phMin + ' - ' + soil.phMax + ' (' + soil.phType + ')' : '-'">
+                </app-property-card>
+                <app-property-card label="Water Retention Level" [value]="soil.waterRetentionLevel"></app-property-card>
+              </dt>
+            </ng-template>
+
+            <!-- Soil Issues Tab -->
+            <ng-template tabContent="issues">
+              <div class="space-y-2 text-gray-700">
+                <p *ngIf="soil.soilIssues?.length; else noIssues">
+                  <span *ngFor="let issue of soil.soilIssues"
+                    class="inline-block bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded-full mr-2 mb-1">
+                    {{ issue }}
+                  </span>
+                </p>
+                <ng-template #noIssues>
+                  <p>No known soil issues for this soil.</p>
+                </ng-template>
+              </div>
+            </ng-template>
+
+            <!-- Notes / Tips Tab -->
+            <ng-template tabContent="notes">
+              <div class="text-gray-700">
+                <p>{{ soil.notes || 'No additional tips available.' }}</p>
+              </div>
+            </ng-template>
+          </app-tabs>
+        </div>
+      </div>
+    </div>
+  </div>
+  } @else {
+  <div class="text-center text-gray-500">
+    <p class="text-lg">soil not found!</p>
+  </div>
+  }
+</ng-container>
