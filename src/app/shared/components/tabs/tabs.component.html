@@ -1,0 +1,19 @@
+<ng-container>
+  <!-- Tab Headers -->
+  <div class="flex border-b border-gray-200 mb-4">
+    @for (tab of tabs; track tab.id) {
+    <button class="px-4 py-2 text-sm font-medium focus:outline-none"
+      [ngClass]="{'border-b-2 border-emerald-600 text-emerald-600': activeTabId === tab.id, 'text-gray-500': activeTabId !== tab.id}"
+      (click)="setTab(tab.id)">{{ tab.label }}</button>
+    }
+  </div>
+
+  <!-- Tab Content -->
+  @for (tabContent of tabContents; track tabContent.id) {
+  <ng-container>
+    @if (tabContent.id === activeTabId) {
+    <ng-container [ngTemplateOutlet]="tabContent.template"></ng-container>
+    }
+  </ng-container>
+  }
+</ng-container>
