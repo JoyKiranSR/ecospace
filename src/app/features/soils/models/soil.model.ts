@@ -18,4 +18,6 @@ export interface Soil {
   texture: string;
   type: string;
   waterRetentionLevel: string;
+  soilIssues?: string[];
+  notes?: string;
 }
