@@ -1,0 +1,37 @@
+<app-list-page-wrapper [title]="listWrapper.title" [description]="listWrapper.description"
+  [instruction]="listWrapper.instruction">
+  @if (soils.length) {
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    @for (soil of soils; track soil.id) {
+    <app-card [hasFooter]="true">
+      <!-- Card Body -->
+      <div card-body class="flex flex-col flex-1">
+        <!-- Soil Name -->
+        <h3 class="text-lg font-semibold mb-2 text-gray-800">{{ soil.name }}</h3>
+
+        <!-- Badges for Type & Texture -->
+        <div class="flex gap-2 mb-3">
+          <span class="bg-orange-400 text-white text-xs font-medium px-2 py-1 rounded-full">
+            {{ soil.type }}
+          </span>
+          <span class="bg-yellow-200 text-black text-xs font-medium px-2 py-1 rounded-full">
+            {{ soil.texture }}
+          </span>
+        </div>
+
+        <!-- Soil Description -->
+        <p class="text-sm text-gray-500 line-clamp-3 flex-1">
+          {{ soil.description || 'No description available.' }}
+        </p>
+      </div>
+      <!-- Card Footer -->
+      <div card-footer class="mt-auto p-2 rounded-b-lg">
+        <app-button [varient]="ButtonVarient.PRIMARY" (click)="goToSoilDetails(soil.id)"> See Details </app-button>
+      </div>
+    </app-card>
+    }
+  </div>
+  } @else {
+  <app-no-list-items></app-no-list-items>
+  }
+</app-list-page-wrapper>
