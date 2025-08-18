@@ -17,4 +17,8 @@ export class SoilsService {
     const reqParams = new HttpParams().set('limit', limit).set('page', page);
     return this.api.get<Soil[]>('soils', { params: reqParams });
   }
+
+  getSoilDetails(id: string): Observable<ApiSuccessResponse<Soil>> {
+    return this.api.get<Soil>(`soils/${id}`);
+  }
 }
