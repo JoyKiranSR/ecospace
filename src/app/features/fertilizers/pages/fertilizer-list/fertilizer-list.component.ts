@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ListPageWrapperComponent } from '../../../../shared/components/list-page-wrapper/list-page-wrapper.component';
 import { NoListItemsComponent } from '../../../../shared/components/no-list-items/no-list-items.component';
@@ -6,6 +7,7 @@ import { Fertilizer } from '../../models/fertilizer.model';
 import { CardComponent } from '../../../../shared/components/card/card.component';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { ButtonVarient } from '../../../../enums/shared.enum';
+import { FertilizerService } from '../../services/fertilizer.service';
 
 @Component({
   selector: 'app-fertilizer-list',
@@ -24,7 +26,7 @@ export class FertilizerListComponent {
   fertilizers: Fertilizer[]; // Placeholder for fertilizer data
   ButtonVarient = ButtonVarient;
 
-  constructor() {
+  constructor(private fertilizerService: FertilizerService, private router: Router) {
     this.listWrapper = {
       title: 'Fertilizers',
       description: 'Discover a variety of fertilizers, their properties, and descriptions.',
@@ -36,34 +38,18 @@ export class FertilizerListComponent {
 
   ngOnInit() {
     // Fetch the list of fertilizers when the component initializes
-    // This is a placeholder; replace with actual service call
-    this.fertilizers = [
-      {
-        id: '1',
-        name: 'Nitrogen Fertilizer',
-        type: 'Chemical',
-        form: 'Granular',
-        applicationMethod: 'Soil Application',
-        availability: 'Year-round',
-        description: 'A fertilizer rich in nitrogen, essential for plant growth.',
-        purpose: 'Promotes leafy growth'
+    this.fertilizerService.getFertilizers().subscribe({
+      next: (response) => {
+        this.fertilizers = response.data;
       },
-      {
-        id: '2',
-        name: 'Compost',
-        type: 'Organic',
-        form: 'Bulk',
-        applicationMethod: 'Soil Amendment',
-        availability: 'Seasonal',
-        description: 'Decomposed organic matter that enriches soil.',
-        purpose: 'Improves soil structure and fertility'
+      error: (error) => {
+        console.error('Error fetching fertilizers:', error);
       }
-    ];
+    });
   }
 
   goToFertilizerDetails(fertilizerId: string) {
     // Navigate to the fertilizer details page
-    // This is a placeholder; replace with actual navigation logic
-    console.log(`Navigating to details for fertilizer ID: ${fertilizerId}`);
+    this.router.navigate(['/fertilizers', fertilizerId]);
   }
 }
