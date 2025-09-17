@@ -1,0 +1,35 @@
+<app-list-page-wrapper [title]="listWrapper.title" [description]="listWrapper.description"
+  [instruction]="listWrapper.instruction">
+  @if (fertilizers.length) {
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    @for (fertilizer of fertilizers; track fertilizer.id) {
+    <app-card [hasFooter]="true">
+      <!-- Card Body -->
+      <div card-body class="flex flex-col flex-1">
+        <!-- Fertilizer Name -->
+        <h3 class="text-lg font-semibold mb-2 text-gray-800">{{ fertilizer.name }}</h3>
+
+        <!-- Badges for Type & Nutrient Content -->
+        <div class="flex gap-2 mb-3">
+          <span class="bg-amber-500 text-white text-xs font-medium px-2 py-1 rounded-full">
+            {{ fertilizer.type }}
+          </span>
+        </div>
+
+        <!-- Fertilizer Description -->
+        <p class="text-sm text-gray-500 line-clamp-3 flex-1">
+          {{ fertilizer.description || 'No description available.' }}
+        </p>
+      </div>
+
+      <!-- Card Footer -->
+      <div card-footer class="mt-auto p-2 rounded-b-lg">
+        <app-button [varient]="ButtonVarient.PRIMARY" (click)="goToFertilizerDetails(fertilizer.id)"> See Details </app-button>
+      </div>
+    </app-card>
+    }
+  </div>
+  } @else {
+  <app-no-list-items></app-no-list-items>
+  }
+</app-list-page-wrapper>

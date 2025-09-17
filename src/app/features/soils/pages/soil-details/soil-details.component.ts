@@ -43,6 +43,7 @@ export class SoilDetailsComponent {
   ngOnInit() {
     // Get the soil ID from the route parameters
     const id = this.route.snapshot.paramMap.get('id');
+    console.log('Fetching details for soil ID:', id);
     if (!id) {
       console.error('No soil ID provided in route parameters');
       return;
@@ -58,6 +59,11 @@ export class SoilDetailsComponent {
         console.error('Error fetching soil details:', error);
       }
     });
+  }
+
+  // Method to get the initial letter of the soil name
+  getSoilInitial(): string | null {
+    return this.soil ? this.soil.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('') : null;
   }
 
   // Method to handle back navigation
