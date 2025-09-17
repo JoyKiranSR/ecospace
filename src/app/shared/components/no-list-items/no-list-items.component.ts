@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-no-list-items',
@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
   templateUrl: './no-list-items.component.html'
 })
 export class NoListItemsComponent {
-  message: string;
-  instruction: string;
+  @Input() message: string;
+  @Input() instruction: string;
 
   constructor() {
     this.message = '';
