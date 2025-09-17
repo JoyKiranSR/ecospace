@@ -43,6 +43,7 @@ export class SoilDetailsComponent {
   ngOnInit() {
     // Get the soil ID from the route parameters
     const id = this.route.snapshot.paramMap.get('id');
+    console.log('Fetching details for soil ID:', id);
     if (!id) {
       console.error('No soil ID provided in route parameters');
       return;

@@ -1,0 +1,9 @@
+<app-list-page-wrapper [title]="listWrapper.title" [description]="listWrapper.description"
+  [instruction]="listWrapper.instruction">
+  @if (fertilizers.length) {
+  <div>Fertilizer Cards</div>
+  } @else {
+  <app-no-list-items></app-no-list-items>
+  }
+
+</app-list-page-wrapper>
