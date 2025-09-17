@@ -38,7 +38,7 @@ export class GrowthStagesOverviewComponent implements OnInit {
     // This is a placeholder; replace with actual service call
     this.service.getGrowthStages().subscribe({
       next: (response) => {
-        this.growthStages = response;
+        this.growthStages = response.data;
       },
       error: (error) => {
         console.error('Error fetching growth stages:', error);
