@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ListPageWrapperComponent } from '../../../../shared/components/list-page-wrapper/list-page-wrapper.component';
 import { NoListItemsComponent } from '../../../../shared/components/no-list-items/no-list-items.component';
@@ -19,7 +20,7 @@ export class GrowthStagesOverviewComponent implements OnInit {
   noListItems: { message: string, instruction: string };
   growthStages: any[];
 
-  constructor(private service: GrowthStageService) { // Replace 'any' with actual service type
+  constructor(private growthStageService: GrowthStageService, private router: Router) {
     this.listWrapper = {
       title: 'Growth Stages Overview',
       description: 'Explore the various growth stages of plants, from germination to maturity, and understand the key characteristics of each stage.',
@@ -35,8 +36,7 @@ export class GrowthStagesOverviewComponent implements OnInit {
 
   ngOnInit() {
     // Fetch the list of growth stages when the component initializes
-    // This is a placeholder; replace with actual service call
-    this.service.getGrowthStages().subscribe({
+    this.growthStageService.getGrowthStages().subscribe({
       next: (response) => {
         this.growthStages = response.data;
       },
@@ -48,6 +48,6 @@ export class GrowthStagesOverviewComponent implements OnInit {
 
   goToStageDetails(stageId: number) {
     // Navigate to the stage details page
-    console.log('Navigating to stage details for stage ID:', stageId);
+    this.router.navigate(['/growth-stages', stageId]);
   }
 }
