@@ -61,6 +61,11 @@ export class SoilDetailsComponent {
     });
   }
 
+  // Method to get the initial letter of the soil name
+  getSoilInitial(): string | null {
+    return this.soil ? this.soil.name.split(' ').map(word => word.charAt(0).toUpperCase()).join('') : null;
+  }
+
   // Method to handle back navigation
   goBack() {
     this.location.back();
