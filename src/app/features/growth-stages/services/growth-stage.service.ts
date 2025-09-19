@@ -15,4 +15,8 @@ export class GrowthStageService {
   getGrowthStages(): Observable<ApiSuccessResponse<GrowthStage[]>> {
     return this.api.get<GrowthStage[]>('growth-stages');
   }
+
+  getGrowthStageDetails(id: string): Observable<ApiSuccessResponse<GrowthStage>> {
+    return this.api.get<GrowthStage>(`growth-stages/${id}`);
+  }
 }

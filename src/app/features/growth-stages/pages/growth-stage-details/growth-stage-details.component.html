@@ -1,1 +1,69 @@
-<p>growth-stage-details works!</p>
+<!-- Page Header -->
+<app-list-page-wrapper [title]="'Growth Stage Details'"
+  [description]="'Detailed information about the selected growth stage.'"
+  [instruction]="'Review the details below to understand the growth stage specifics.'">
+</app-list-page-wrapper>
+
+@if (growthStage) {
+  <div class="flex flex-col">
+    <!-- Back Button -->
+    <div class="mb-6 flex">
+      <app-button [varient]="ButtonVarient.SECONDARY" (click)="goBack()">
+        Back to List
+      </app-button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="grid gap-6 lg:grid-cols-12 flex-grow">
+      <!-- Left Column -->
+      <div class="lg:col-span-4 flex flex-col">
+        <div class="text-3xl font-bold text-gray-800 mb-4">{{ growthStage.name | titlecase }}</div>
+        <div
+          class="w-full h-64 bg-green-300 rounded-2xl flex items-center justify-center text-6xl font-bold text-green-900">
+          {{ getGrowthStageInitial() }}
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="lg:col-span-8 flex flex-col space-y-4">
+        <!-- Description -->
+        <p class="text-gray-700 mt-14">
+          {{ growthStage.description || 'No description available.' }}
+        </p>
+
+        <!-- Tabs: Overview, Care Tips, Notes/Tips -->
+        <div class="mt-4">
+          <app-tabs [tabs]="tabs">
+            <!-- Overview Tab -->
+            <ng-template tabContent="overview">
+              <dt class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <app-property-card label="Stage" [value]="growthStage.order"></app-property-card>
+                <app-property-card label="Minimum Days" [value]="growthStage.minDays"></app-property-card>
+                <app-property-card label="Maxmimum Days" [value]="growthStage.maxDays"></app-property-card>
+              </dt>
+            </ng-template>
+
+            <!-- Care Tips Tab -->
+            <ng-template tabContent="care-tips">
+              <div class="text-gray-700">
+                <p>No care tips available.</p>
+              </div>
+            </ng-template>
+
+            <!-- Notes/Tips Tab -->
+            <ng-template tabContent="notes">
+              <div class="text-gray-700">
+                <p>No additional tips available.</p>
+              </div>
+            </ng-template>
+          </app-tabs>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+  @else {
+  <div class="text-center text-gray-500">
+    <p class="text-lg">growth stage not found!</p>
+  </div>
+  }
