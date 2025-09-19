@@ -4,13 +4,15 @@ import { Router } from '@angular/router';
 import { ListPageWrapperComponent } from '../../../../shared/components/list-page-wrapper/list-page-wrapper.component';
 import { NoListItemsComponent } from '../../../../shared/components/no-list-items/no-list-items.component';
 import { GrowthStageService } from '../../services/growth-stage.service';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-growth-stages-overview',
   standalone: true,
   imports: [
     NoListItemsComponent,
-    ListPageWrapperComponent
+    ListPageWrapperComponent,
+    TitleCasePipe
   ],
   templateUrl: './growth-stages-overview.component.html',
   styleUrl: './growth-stages-overview.component.scss'
@@ -38,7 +40,8 @@ export class GrowthStagesOverviewComponent implements OnInit {
     // Fetch the list of growth stages when the component initializes
     this.growthStageService.getGrowthStages().subscribe({
       next: (response) => {
-        this.growthStages = response.data;
+        // Order stages by 'order' property
+        this.growthStages = response.data.sort((a, b) => a.order - b.order);
       },
       error: (error) => {
         console.error('Error fetching growth stages:', error);
