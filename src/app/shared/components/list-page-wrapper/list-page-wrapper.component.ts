@@ -9,12 +9,11 @@ import { Component, Input } from '@angular/core';
 export class ListPageWrapperComponent {
   @Input() title: string;
   @Input() description: string;
-  @Input() instruction: string;
+  @Input() instruction?: string;
 
   constructor() {
     // Initialize any necessary properties or services here
     this.title = '';
     this.description = '';
-    this.instruction = '';
   }
 }
