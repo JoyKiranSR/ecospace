@@ -53,7 +53,7 @@
             <!-- Notes/Tips Tab -->
             <ng-template tabContent="notes">
               <div class="text-gray-700">
-                <p>No additional tips available.</p>
+                <p>{{ growthStage.notes || 'No additional tips available.' }}</p>
               </div>
             </ng-template>
           </app-tabs>

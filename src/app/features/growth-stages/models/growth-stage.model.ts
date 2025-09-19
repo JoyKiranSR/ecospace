@@ -5,5 +5,6 @@ export interface GrowthStage {
   maxDays: number;
   minDays: number;
   name: string;
+  notes?: string;
   order: number;
 }
