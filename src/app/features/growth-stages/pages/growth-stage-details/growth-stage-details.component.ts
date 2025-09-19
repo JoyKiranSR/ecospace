@@ -26,11 +26,16 @@ import { TitleCasePipe } from '@angular/common';
   styleUrl: './growth-stage-details.component.scss'
 })
 export class GrowthStageDetailsComponent implements OnInit {
+  listWrapper: { title: string, description: string };
   growthStage: GrowthStage | null;
   tabs: Tab[];
   ButtonVarient = ButtonVarient;
 
   constructor(private route: ActivatedRoute, private growthStageService: GrowthStageService) {
+    this.listWrapper = {
+      title: 'Growth Stage Details',
+      description: 'Detailed information about the selected growth stage.'
+    };
     this.growthStage = null;
     this.tabs = [
       { id: 'overview', label: 'Overview' },
