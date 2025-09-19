@@ -26,7 +26,7 @@ import { FertilizerService } from '../../services/fertilizer.service';
   styleUrl: './fertilizer-details.component.scss'
 })
 export class FertilizerDetailsComponent implements OnInit {
-  listWrapper: { title: string; description: string; instruction: string };
+  listWrapper: { title: string; description: string; instruction?: string };
   fertilizer: Fertilizer | null;
   tabs: Tab[];
   ButtonVarient = ButtonVarient;
@@ -34,9 +34,9 @@ export class FertilizerDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private fertilizerService: FertilizerService, private location: Location) {
     this.listWrapper = {
       title: 'Fertilizer Details',
-      description: 'Detailed information about the selected fertilizer.',
-      instruction: 'Review the details below.'
+      description: 'Detailed information about the selected fertilizer.'
     };
+    
     // Initialize fertilizer object
     this.fertilizer = null;
     // Initialize tabs with placeholder content
