@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
+
 import { LayoutComponent } from './core/components/layout/layout.component';
+import { ClimateDetailsComponent } from './features/climates/pages/climate-details/climate-details.component';
 import { ClimateListComponent } from './features/climates/pages/climate-list/climate-list.component';
 import { FertilizerDetailsComponent } from './features/fertilizers/pages/fertilizer-details/fertilizer-details.component';
 import { FertilizerListComponent } from './features/fertilizers/pages/fertilizer-list/fertilizer-list.component';
@@ -14,6 +16,7 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'climates', component: ClimateListComponent },
+      { path: 'climates/:id', component: ClimateDetailsComponent },
       { path: 'fertilizers', component: FertilizerListComponent },
       { path: 'fertilizers/:id', component: FertilizerDetailsComponent },
       { path: 'growth-stages', component: GrowthStagesOverviewComponent },

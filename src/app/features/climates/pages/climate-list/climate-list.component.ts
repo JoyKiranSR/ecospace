@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ButtonVarient } from '../../../../enums/shared.enum';
 import { CardComponent } from '../../../../shared/components/card/card.component';
@@ -23,7 +24,7 @@ export class ClimateListComponent implements OnInit {
   climates: any[];
   pageWrapper: { title: string, description: string, instruction?: string };
 
-  constructor(private climateService: ClimateService) {
+  constructor(private climateService: ClimateService, private router: Router) {
     // Initialize the data
     this.climates = [];
     this.pageWrapper = {
@@ -46,7 +47,6 @@ export class ClimateListComponent implements OnInit {
   }
 
   goToClimateDetails(climateId: string): void {
-    // Navigate to climate details page (implementation depends on your routing setup)
-    console.log(`Navigating to details for climate ID: ${climateId}`);
+    this.router.navigate(['/climates', climateId]);
   }
 }
