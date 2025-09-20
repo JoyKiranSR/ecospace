@@ -65,4 +65,9 @@ export class ClimateService {
       data: Array.from(this.climates.values())
     });
   }
+
+  getClimateById(id: string): Observable<ApiSuccessResponse<Climate | null>> {
+    const climate = this.climates.get(id) || null;
+    return of({ data: climate });
+  }
 }

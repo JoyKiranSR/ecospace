@@ -8,4 +8,5 @@ export interface Climate {
   description: string;
   id: string;
   name: string;
+  notes?: string; // Optional field for additional notes or tips
 }
