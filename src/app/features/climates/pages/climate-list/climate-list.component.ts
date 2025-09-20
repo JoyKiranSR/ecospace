@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TitleCasePipe } from '@angular/common';
 
 import { ButtonVarient } from '../../../../enums/shared.enum';
 import { CardComponent } from '../../../../shared/components/card/card.component';
@@ -15,7 +16,8 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
     ButtonComponent,
     CardComponent,
     NoListItemsComponent,
-    ListPageWrapperComponent
+    ListPageWrapperComponent,
+    TitleCasePipe
   ],
   templateUrl: './climate-list.component.html'
 })
