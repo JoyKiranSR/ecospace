@@ -1,0 +1,49 @@
+<app-list-page-wrapper 
+  [title]="listWrapper.title" 
+  [description]="listWrapper.description"
+  [instruction]="listWrapper.instruction">
+  
+  <div class="w-full mt-12">
+    @if (growthStages && growthStages.length) {
+      <!-- Growth Stages Vertical Timeline -->
+      <div class="flex flex-col items-center justify-center">
+        @for (stage of growthStages; track stage.id; let last = $last) {
+          <div class="flex flex-col items-center">
+            
+            <!-- Stage -->
+            <div class="flex flex-col items-center cursor-pointer relative"
+                 (click)="goToStageDetails(stage.id)">
+              <!-- Circle -->
+              <div
+                class="w-20 h-20 flex items-center justify-center rounded-full shadow-lg bg-gradient-to-br from-emerald-100 to-emerald-300 text-3xl">
+                {{ stage.name.charAt(0) | titlecase }}
+              </div>
+              <span
+                class="absolute -top-2 -right-0 w-7 h-7 flex items-center justify-center rounded-full bg-emerald-600 text-white text-s font-bold shadow">
+                {{ stage.order }}
+              </span>
+              <!-- Label -->
+              <p class="mt-2 text-base font-semibold text-gray-800 text-center">{{ stage.name | titlecase }}</p>
+            </div>
+
+            <!-- Arrow Connector (skip last) -->
+            @if (!last) {
+              <div class="flex items-center justify-center py-4">
+                <svg class="w-8 h-12 text-emerald-500" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24">
+                  <line x1="12" y1="2" x2="12" y2="24" />
+                  <polyline points="6,14 12,24 18,14" />
+                </svg>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    } @else {
+      <app-no-list-items 
+        [message]="noListItems.message"
+        [instruction]="noListItems.instruction">
+      </app-no-list-items>
+    }
+  </div>
+</app-list-page-wrapper>
