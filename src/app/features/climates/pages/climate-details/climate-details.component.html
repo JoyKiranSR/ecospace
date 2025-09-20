@@ -1,1 +1,11 @@
-<p>climate-details works!</p>
+<app-list-page-wrapper [title]="pageWrapper.title" [description]="pageWrapper.description">
+  @if (climate) {
+    <!-- Show climate details here -->
+  }
+  @else {
+    <!-- No climate selected -->
+    <div class="text-center text-gray-500">
+      <p class="text-lg">Climate not found!</p>
+    </div>
+  }
+</app-list-page-wrapper>
