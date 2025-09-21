@@ -1,7 +1,29 @@
-<app-list-page-wrapper [title]="pageWrapper.title" [description]="pageWrapper.description" [instruction]="pageWrapper.instruction">
-    @if (seasons.length) {
-    <!-- Loop through seasons and display them -->
-    } @else {
-    <app-no-list-items></app-no-list-items>
+<app-list-page-wrapper [title]="pageWrapper.title" [description]="pageWrapper.description"
+  [instruction]="pageWrapper.instruction">
+  @if (seasons.length) {
+  <!-- Loop through seasons and display them -->
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    @for(season of seasons; track season.id) {
+    <app-card [hasFooter]="true">
+      <!-- Card Body -->
+      <div card-body class="flex flex-col flex-1">
+        <!-- Season Name -->
+        <h3 class="text-lg font-semibold mb-2 text-gray-800">{{ season.name | titlecase }}</h3>
+
+        <!-- Season Description -->
+        <p class="text-sm text-gray-500 line-clamp-3 flex-1">
+          {{ season.description || 'No description available.' }}
+        </p>
+      </div>
+      <!-- Card Footer -->
+      <div card-footer class="mt-auto p-2 rounded-b-lg">
+        <app-button [varient]="ButtonVarient.PRIMARY" (click)="goToSeasonDetails(season.id)"> See Details
+        </app-button>
+      </div>
+    </app-card>
     }
+  </div>
+  } @else {
+  <app-no-list-items></app-no-list-items>
+  }
 </app-list-page-wrapper>
