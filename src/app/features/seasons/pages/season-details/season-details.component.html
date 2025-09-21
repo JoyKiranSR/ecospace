@@ -1,0 +1,9 @@
+<app-list-page-wrapper [title]="pageWrapper.title" [description]="pageWrapper.description">
+  @if (season) {
+  <!-- Season Details Content -->
+  } @else {
+  <div class="text-center text-gray-500">
+    <p class="text-lg">Season not found!</p>
+  </div>
+  }
+</app-list-page-wrapper>
