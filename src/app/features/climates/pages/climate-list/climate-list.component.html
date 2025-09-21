@@ -1,0 +1,30 @@
+<app-list-page-wrapper [title]="pageWrapper.title" [description]="pageWrapper.description"
+  [instruction]="pageWrapper.instruction">
+  <!-- Climate list content goes here -->
+  @if (climates.length) {
+  <!-- Loop through climates and display them -->
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    @for(climate of climates; track climate.id) {
+    <app-card [hasFooter]="true">
+      <!-- Card Body -->
+      <div card-body class="flex flex-col flex-1">
+        <!-- Climate Name -->
+        <h3 class="text-lg font-semibold mb-2 text-gray-800">{{ climate.name | titlecase }}</h3>
+
+        <!-- Climate Description -->
+        <p class="text-sm text-gray-500 line-clamp-3 flex-1">
+          {{ climate.description || 'No description available.' }}
+        </p>
+      </div>
+      <!-- Card Footer -->
+      <div card-footer class="mt-auto p-2 rounded-b-lg">
+        <app-button [varient]="ButtonVarient.PRIMARY" (click)="goToClimateDetails(climate.id)"> See Details
+        </app-button>
+      </div>
+    </app-card>
+    }
+  </div>
+  } @else {
+  <app-no-list-items></app-no-list-items>
+  }
+</app-list-page-wrapper>

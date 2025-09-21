@@ -1,0 +1,69 @@
+<app-list-page-wrapper [title]="pageWrapper.title" [description]="pageWrapper.description">
+  @if (climate) {
+  <!-- Show climate details here -->
+  <div class="flex flex-col">
+    <!-- Back Button -->
+    <div class="mb-6 flex">
+      <app-button [varient]="ButtonVarient.SECONDARY" (click)="goBack()">
+        Back to List
+      </app-button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="grid gap-6 lg:grid-cols-12 flex-grow">
+      <!-- Left Column -->
+      <div class="lg:col-span-4 flex flex-col">
+        <div class="text-3xl font-bold text-gray-800 mb-4">{{ climate.name | titlecase }}</div>
+        <div
+          class="w-full h-64 bg-amber-300 rounded-2xl flex items-center justify-center text-6xl font-bold text-amber-900">
+          {{ getClimateInitial() }}
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="lg:col-span-8 flex flex-col space-y-4">
+        <!-- Description -->
+        <p class="text-gray-700 mt-14">
+          {{ climate.description || 'No description available.' }}
+        </p>
+
+        <!-- Tabs: Overview, Notes/Tips -->
+        <div class="mt-4">
+          <app-tabs [tabs]="tabs">
+            <!-- Overview Tab -->
+            <ng-template tabContent="overview">
+              <dt class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <app-property-card label="Average Humidity (Min)"
+                [value]="climate.averageHumidityMin"></app-property-card>
+                <app-property-card label="Average Humidity (Max)"
+                [value]="climate.averageHumidityMax"></app-property-card>
+                <app-property-card label="Average Rainfall (Min)"
+                [value]="climate.averageRainfallMin"></app-property-card>
+                <app-property-card label="Average Rainfall (Max)"
+                [value]="climate.averageRainfallMax"></app-property-card>
+                <app-property-card label="Average Temperature (Min)"
+                  [value]="climate.averageTemperatureMin"></app-property-card>
+                <app-property-card label="Average Temperature (Max)"
+                  [value]="climate.averageTemperatureMax"></app-property-card>
+              </dt>
+            </ng-template>
+
+            <!-- Notes/Tips Tab -->
+            <ng-template tabContent="notes">
+              <div class="text-gray-700">
+                <p>{{ climate.notes || 'No additional tips available.' }}</p>
+              </div>
+            </ng-template>
+          </app-tabs>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+  @else {
+  <!-- No climate selected -->
+  <div class="text-center text-gray-500">
+    <p class="text-lg">Climate not found!</p>
+  </div>
+  }
+</app-list-page-wrapper>
