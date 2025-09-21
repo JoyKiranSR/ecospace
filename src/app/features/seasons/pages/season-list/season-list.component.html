@@ -1,0 +1,7 @@
+<app-list-page-wrapper [title]="pageWrapper.title" [description]="pageWrapper.description" [instruction]="pageWrapper.instruction">
+    @if (seasons.length) {
+    <!-- Loop through seasons and display them -->
+    } @else {
+    <app-no-list-items></app-no-list-items>
+    }
+</app-list-page-wrapper>
