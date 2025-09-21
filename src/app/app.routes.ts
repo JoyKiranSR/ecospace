@@ -7,6 +7,8 @@ import { FertilizerDetailsComponent } from './features/fertilizers/pages/fertili
 import { FertilizerListComponent } from './features/fertilizers/pages/fertilizer-list/fertilizer-list.component';
 import { GrowthStageDetailsComponent } from './features/growth-stages/pages/growth-stage-details/growth-stage-details.component';
 import { GrowthStagesOverviewComponent } from './features/growth-stages/pages/growth-stages-overview/growth-stages-overview.component';
+import { SeasonDetailsComponent } from './features/seasons/pages/season-details/season-details.component';
+import { SeasonListComponent } from './features/seasons/pages/season-list/season-list.component';
 import { SoilDetailsComponent } from './features/soils/pages/soil-details/soil-details.component';
 import { SoilListComponent } from './features/soils/pages/soil-list/soil-list.component';
 
@@ -21,6 +23,8 @@ export const routes: Routes = [
       { path: 'fertilizers/:id', component: FertilizerDetailsComponent },
       { path: 'growth-stages', component: GrowthStagesOverviewComponent },
       { path: 'growth-stages/:id', component: GrowthStageDetailsComponent },
+      { path: 'seasons', component: SeasonListComponent },
+      { path: 'seasons/:id', component: SeasonDetailsComponent },
       { path: 'soils', component: SoilListComponent },
       { path: 'soils/:id', component: SoilDetailsComponent },
       { path: '', redirectTo: 'soils', pathMatch: 'full' },

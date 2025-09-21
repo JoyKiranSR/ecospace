@@ -1,0 +1,76 @@
+<app-list-page-wrapper [title]="pageWrapper.title" [description]="pageWrapper.description">
+  @if (season) {
+  <!-- Season Details Content -->
+  <div class="flex flex-col">
+    <!-- Back Button -->
+    <div class="mb-6 flex">
+      <app-button [varient]="ButtonVarient.SECONDARY" (click)="goBack()">
+        Back to List
+      </app-button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="grid gap-6 lg:grid-cols-12 flex-grow">
+      <!-- Left Column -->
+      <div class="lg:col-span-4 flex flex-col">
+        <div class="text-3xl font-bold text-gray-800 mb-4">{{ season.name | titlecase }}</div>
+        <div
+          class="w-full h-64 bg-green-300 rounded-2xl flex items-center justify-center text-6xl font-bold text-green-900">
+          {{ getSeasonInitial() }}
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="lg:col-span-8 flex flex-col space-y-4">
+        <!-- Description -->
+        <p class="text-gray-700 mt-14">
+          {{ season.description || 'No description available.' }}
+        </p>
+
+        <!-- Overview -->
+        <div class="mt-4">
+          <!-- Tabs: Overview, Activities, Notes/Tips -->
+          <app-tabs [tabs]="tabs">
+            <!-- Overview Tab -->
+            <ng-template tabContent="overview">
+              <dt class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <app-property-card label="Typical Daylight Pattern" [value]="season.typicalDayLightPattern"></app-property-card>
+                <app-property-card label="Daylight Hours" [value]="season.dayLightHours ?? null"></app-property-card>
+              </dt>
+            </ng-template>
+
+            <!-- Activities Tab -->
+            <ng-template tabContent="activities">
+              <div class="space-y-2 text-gray-700">
+                @if (season.commonActivities.length) {
+                  <p>
+                    @for (activity of season.commonActivities; track activity) {
+                    <span class="inline-block bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded-full mr-2 mb-1">
+                      {{ activity }}
+                    </span>
+                  }
+                  </p>
+                } @else {
+                  <p>No activities available.</p>
+                }
+              </div>
+            </ng-template>
+
+            <!-- Notes/Tips Tab -->
+            <!-- Notes/Tips Tab -->
+              <ng-template tabContent="notes">
+                <div class="text-gray-700">
+                  <p>{{ season.notes || 'No additional tips available.' }}</p>
+                </div>
+              </ng-template>
+          </app-tabs>
+        </div>
+      </div>
+    </div>
+  </div>
+  } @else {
+  <div class="text-center text-gray-500">
+    <p class="text-lg">Season not found!</p>
+  </div>
+  }
+</app-list-page-wrapper>
