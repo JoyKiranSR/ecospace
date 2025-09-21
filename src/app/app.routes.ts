@@ -23,6 +23,7 @@ export const routes: Routes = [
       { path: 'growth-stages', component: GrowthStagesOverviewComponent },
       { path: 'growth-stages/:id', component: GrowthStageDetailsComponent },
       { path: 'seasons', component: SeasonListComponent },
+      { path: 'seasons/:id', component: SeasonListComponent },
       { path: 'soils', component: SoilListComponent },
       { path: 'soils/:id', component: SoilDetailsComponent },
       { path: '', redirectTo: 'soils', pathMatch: 'full' },

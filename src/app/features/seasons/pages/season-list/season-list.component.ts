@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TitleCasePipe } from '@angular/common';
 
 import { ButtonVarient } from '../../../../enums/shared.enum';
@@ -26,7 +27,7 @@ export class SeasonListComponent implements OnInit {
   pageWrapper: { title: string; description: string; instruction?: string };
   seasons: Season[];
 
-  constructor(private seasonService: SeasonService) {
+  constructor(private seasonService: SeasonService, private router: Router) {
     this.pageWrapper = {
       title: 'Seasons',
       description: 'Discover the different seasons and their impact on agriculture and ecosystems.',
@@ -47,6 +48,6 @@ export class SeasonListComponent implements OnInit {
   }
 
   goToSeasonDetails(seasonId: string): void {
-    // Navigation logic to season details can be implemented here
+    this.router.navigate(['/seasons', seasonId]);
   }
 }
