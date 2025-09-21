@@ -54,4 +54,9 @@ export class SeasonService {
   getSeasons(): Observable<ApiSuccessResponse<Season[]>> {
     return of({ data: Array.from(this.seasons.values()) });
   }
+
+  getSeasonById(id: string): Observable<ApiSuccessResponse<Season | null>> {
+    const season = this.seasons.get(id) || null;
+    return of({ data: season });
+  }
 }
